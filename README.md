@@ -70,7 +70,7 @@ One file, organized in the order a request actually moves through it:
 
 Everything's kept in one file on purpose — for a project this size, I'd
 rather it read start to finish than be split across folders you have to
-jump between. Every function has a short docstring saying what it does.
+jump between. 
 
 ## A few decisions worth explaining
 
