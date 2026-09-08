@@ -52,6 +52,34 @@ A good order to try things in:
    time — that's the "closed jobs stop accepting applications" rule
    actually being enforced, not just described in a comment somewhere.
 
+## Running the tests
+ 
+```bash
+pytest
+```
+ 
+(Windows: `py -m pytest`, for the same reason as above.)
+ 
+A successful run looks like this:
+ 
+```
+============================= test session starts ==============================
+collected 16 items
+ 
+test_app.py ................                                          [100%]
+ 
+============================== 16 passed in 0.31s ===============================
+```
+ 
+Each dot is one passing test. If something fails, a dot turns into an
+`F` and pytest prints exactly which assertion failed and why — the line
+starting with `FAILED test_app.py::...` tells you which test broke.
+ 
+`test_app.py` covers every endpoint's happy path plus the error cases —
+missing job (`404`), closed job rejecting an application (`409`), bad
+input (`422`) — and `conftest.py` resets the in-memory storage before
+each test so they don't interfere with each other.
+
 ## What's in `app.py`
 
 One file, organized in the order a request actually moves through it:
